@@ -1,10 +1,13 @@
-import std;
+//import std;
+#include <iostream>
+#include <vector>
 using namespace std;
 
 void init(vector<double> &v) // pass-by-reference
 {
     for (int i = 0; i < v.size(); ++i)
         v[i] = i;
+cout << "Initialized vector of size " << v.size() << endl;    
 }
 void g(int x)
 {

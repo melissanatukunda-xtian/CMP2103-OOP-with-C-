@@ -1,4 +1,6 @@
-import std;
+//import std;
+#include <iostream>
+#include <vector>
 using namespace std;
 
 void print(const vector<double>& v) // pass-by-constant-reference
@@ -16,7 +18,7 @@ void print(const vector<double>& v) // pass-by-constant-reference
 void f(int x)
 {
     vector<double> vd1(10);      // small vector
-    vector<double> vd2(10000); // large vector
+    vector<double> vd2(100); // large vector
     vector<double> vd3(x);       // vector of some unknown size
     // ... fill vd1, vd2, vd3 with values ...
     print(vd1);
@@ -26,5 +28,5 @@ void f(int x)
 }
 
 int main(){
-    f(10000);
+    f(1000);
 }
