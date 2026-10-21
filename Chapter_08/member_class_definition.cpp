@@ -1,10 +1,10 @@
 import std;
 using namespace std;
-// simple Date (many people prefer implementation details last)
+// simple Date
 class Date
 {
 public:
-    Date(int y, int m, int d); // constructor: check for valid date and initialize
+    Date(int y, int m, int d); // constructor declaration
     void add_day(int n);       // increase the Date by n days
     int month();
     // ...
@@ -17,10 +17,14 @@ Date::Date(int yy, int mm, int dd) // constructor
 {
 }
 
+
+// Define member functions outside the class definition
 void Date::add_day(int n)
 {
     Date.d += 1;
 }
+
+// Define member functions outside the class definition
 int Date::month() // oops: we forgot Date::
 {
     return m; // not the member function, can’t access m

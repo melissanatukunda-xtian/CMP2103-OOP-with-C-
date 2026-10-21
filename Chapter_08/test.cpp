@@ -1,43 +1,72 @@
+// import std;
+// using namespace std;
+
+// // Base class
+// class Vehicle
+// {
+// public:
+//     string brand = "Ford";
+    
+//     void sound()
+//     {
+//         cout << "Tuut, tuut! \n";
+//     }
+// };
+
+// // Derived class
+// class Car : public Vehicle
+// {
+// public:
+//     string model = "Mustang";
+// };
+
+// int main()
+// {
+//     Car myCar;
+//     myCar.sound();
+//     cout << myCar.brand + " " + myCar.model;
+//     return 0;
+// }
+
+
 import std;
 using namespace std;
-// simple Date (many people prefer implementation details last)
-class Date
+
+// Base class
+class Vehicle
 {
 public:
-    Date(int y, int m, int d); // constructor: check for valid date and initialize
+    string brand;
 
-    void add_day(int n); // increase the Date by n days
-    int month();
-    void print() const;
-    // ...
+    Vehicle(string brand)
+        : brand(brand)
+    {
+    }
 
-private:
-    int y, m, d; // year, month, day
+    void sound()
+    {
+        print("Tuut, tuut!\n");
+    }
 };
 
-Date::Date(int yy, int mm, int dd) // constructor
-    : y{yy}, m{mm}, d{dd}          // note: member initializers
+// Derived class
+class Car : public Vehicle
 {
-}
+public:
+    string model;
 
-void Date::add_day(int n)
-{
-    d += n;
-}
-
-int Date::month()
-{
-    return m; // not the member function, can’t access m
-}
-
-void Date::print() const
-{
-    cout << d << "/" << m << "/" << y << "\n";
-}
+    Car(string brand, string model)
+        : Vehicle(brand), model(model)
+    {
+    }
+};
 
 int main()
 {
-    Date today{2026, 5, 5};
-    today.add_day(5);
-    today.print();
+    Car myCar{"Ford", "Mustang"};
+
+    myCar.sound();
+    print("{} {}\n", myCar.brand, myCar.model);
+
+    return 0;
 }

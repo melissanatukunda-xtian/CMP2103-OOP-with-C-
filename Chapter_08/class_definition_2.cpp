@@ -1,49 +1,36 @@
 import std;
 using namespace std;
-
-class X
+// simple Date (many people prefer implementation details last)
+class Date
 {
-
-    // member objects are private by default. Without declaring, members are treated to be default.
-
-    int f; // private member
-
-    int mf_add(int y, int z) // private and can only be accessed within a class X
-    {
-        int sum;
-        sum = y + z;
-        return sum;
-    }
-
-    // Alternatively, explicitly declare private members
-    // private:
-    //     int f; // private member
-
-    //     int mf_add(int y, int z) // private and can only be accessed within a class X
-    //     {
-    //         int sum;
-    //         sum = y + z;
-    //         return sum;
-    //     }
-
 public:
-    int m;    // public data member
-    void mf() // Public function.
-
-    {
-        f = 5;                                                  // private object assigned a value                                             // Access private data member
-        print("Sum of {} and {} is {}.\n", f, m, mf_add(f, m)); // Use private member function
-        return;                                                 // returns nothing
-    }
+    Date(int y, int m, int d); // constructor declaration
+    void add_day(int n);       // increase the Date by n days
+    int month();
+    // ...
+private:
+    int y, m, d; // year, month, day
 };
+
+Date::Date(int yy, int mm, int dd) // constructor
+    : y{yy}, m{mm}, d{dd}          // note: member initializers
+{
+}
+
+// Define member functions outside the class definition
+void Date::add_day(int n)
+{
+    d += 1;
+}
+
+// Define member functions outside the class definition
+int Date::month() // oops: we forgot Date::
+{
+    return m; // not the member function, can’t access m
+}
 
 int main()
 {
-    X x; // class instance of class X
-    // define a public function mf_add
-
-    x.m = 10; // Assign a value to public data member, m of class x
-    // x.f = 3; // return error because it is a private data member
-    cout << x.m << "\n";
-    x.mf(); // Use public class
+    Date today{2026, 5, 5};
+    print("{}\n", today.month());
 }
